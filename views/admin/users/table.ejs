@@ -1,0 +1,39 @@
+<table id="example2" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Role</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0; i<user.length; i++){ %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= user[i].name %></td>
+          <td><%= user[i].role %></td>
+          <td><%= user[i].email %></td>
+          <td><%= user[i].phoneNumber %></td>
+          <td>
+            <form action="/user/delete/<%=user[i]._id %>?_method=DELETE" method="POST">
+              <a href="/user/edit/<%= user[i]._id %>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i>Ubah</a>
+              <button class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</button>
+            </form>
+          </td>
+        </tr>
+      <%} %>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>No</th>
+      <th>Nama</th>
+      <th>Role</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Action</th>
+    </tr>
+    </tfoot>
+  </table>

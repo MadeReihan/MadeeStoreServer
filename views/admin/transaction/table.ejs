@@ -1,0 +1,81 @@
+<table id="example2" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama Game</th>
+      <th>Item</th>
+      <th>Total Harga</th>
+      <th>Status</th>
+      <th>Nama Player</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0; i<transaction.length; i++){ %>
+        <tr>
+          <td><%= i+1 %></td>
+            <td>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <img src="uploads/<%=transaction[i].historyVoucherTopup.thumbnail%>" width="48px" height="48px">
+                    </li>
+                </ul>
+              <%= transaction[i]?.historyVoucherTopup?.gameName %>
+              <br>
+              <%= transaction[i]?.historyVoucherTopup?.category %>
+            </td>
+          <td><%= transaction[i]?.historyVoucherTopup?.quantity %> - <%= transaction[i]?.historyVoucherTopup?.coinName %></td>
+          
+          <td><%= transaction[i]?.value %></td>
+            
+          <td>
+              <% if(transaction[i].status === 'pending' || transaction[i].status === 'Pending'){ %>
+                <span class="badge badge-warning"><%=transaction[i].status%></span>
+              <%}else if(transaction[i].status === 'success' ||transaction[i].status === 'Success' ){ %>
+                <span class="badge badge-success"><%=transaction[i].status%></span>
+              <%}else{%>
+                <span class="badge badge-danger"><%=transaction[i].status%></span>
+              <%}%>
+          </td>
+
+          <td>
+              <%= transaction[i]?.player?.name ?? '-'%>
+          </td>
+          
+          <% if(transaction[i].status === 'pending' || transaction[i].status === 'Pending'){ %>
+            <td>
+              <form action="/transaction/status/<%=transaction[i]._id %>?status=failed&_method=PUT" method="POST" style="display: inline-block;">
+                <button class="btn btn-danger"><i class="fas fa-times-circle"></i> Tolak</button>
+              </form>
+              <form action="/transaction/status/<%=transaction[i]._id %>?status=success&_method=PUT" method="POST" style="display: inline-block;">
+                <button class="btn btn-info"><i class="fas fa-check-circle"></i> Terima</button>
+              </form>
+            </td>
+          <%}else if(transaction[i].status === 'success' ||transaction[i].status === 'Success' ){%>
+              <td>
+                <form action="/transaction/status/<%=transaction[i]._id %>?status=failed&_method=PUT" method="POST" style="display: inline-block;">
+                  <button class="btn btn-danger"><i class="fas fa-times-circle"></i> Tolak</button>
+                </form>
+              </td>
+          <%}else{%>
+            <td>
+              <form action="/transaction/status/<%=transaction[i]._id %>?status=success&_method=PUT" method="POST" style="display: inline-block;">
+                <button class="btn btn-info"><i class="fas fa-check-circle"></i> Terima</button>
+              </form>
+            </td>
+          <%}%>
+        </tr>
+      <%} %>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>No</th>
+        <th>Nama Game</th>
+        <th>Item</th>
+        <th>Total Harga</th>
+        <th>Status</th>
+        <th>Nama Player</th>
+        <th>Action</th>
+    </tr>
+    </tfoot>
+  </table>
