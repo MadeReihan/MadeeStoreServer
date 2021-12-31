@@ -1,7 +1,7 @@
 const Transactions = require('../transaction/model')
 const Category = require('../category/model')
 const Player = require('../player/model')
-const Voucher = require('../transaction/model')
+const Voucher = require('../voucher/model')
 module.exports={
     index: async(req,res) => {
         try{
