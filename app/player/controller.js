@@ -22,7 +22,7 @@ module.exports={
     detailPage:async(req,res)=>{
         try {
             const{id} = req.params
-            const voucher = await Voucher.findOne({_id:id}).populate('category').populate('nominals').populate('user','_id name phoneNumber')
+            const voucher = await Voucher.findOne({_id:id}).populate('category').populate('bank').populate('nominals').populate('user','_id name phoneNumber')
 
             if(!voucher){
                 return  res.status(404).json({message:`voucher game tidak ditemukan`})
