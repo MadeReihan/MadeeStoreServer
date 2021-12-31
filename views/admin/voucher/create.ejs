@@ -58,11 +58,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Bank</label>
+                        <label>Payment</label>
                         <div class="select2-purple">
-                            <select class="form-control select2" multiple="multiple" style="width: 100%;" name="bank" required data-placeholder="Pilih bank">
-                              <% bank.forEach(bank=>{%>
-                                <option value="<%= bank._id%>"><%= bank.bankName%> - <%= bank.noRekening%> </option>
+                            <select class="form-control select2" multiple="multiple" style="width: 100%;" name="payment" required data-placeholder="Pilih payment">
+                              <% payment.forEach(payment=>{%>
+                                <option value="<%= payment._id%>"><%= payment.type%> - <%= payment.banks.bankName%> (<%= payment.banks.noRekening%>)</option>
                               <%})%>
                             </select>
                         </div>

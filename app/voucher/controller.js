@@ -1,7 +1,7 @@
 const Voucher = require('./model')
 const Category = require('../category/model')
 const Nominal = require('../nominal/model')
-const Bank = require('../bank/model')
+const Payment = require('../payment/model')
 const path = require('path')
 const fs = require('fs')
 const config = require('../../config')
@@ -12,7 +12,7 @@ module.exports={
             const alertStatus = req.flash("alertStatus")
 
             const alert = {message:alertMessage, status:alertStatus}
-            const voucher = await Voucher.find().populate('category').populate('nominals').populate('bank')
+            const voucher = await Voucher.find().populate('category').populate('nominals').populate('payment')
             
             res.render('admin/voucher/view_voucher',{
                 voucher,
@@ -30,8 +30,8 @@ module.exports={
         try {
             const category = await Category.find()
             const nominal = await Nominal.find()
-            const bank = await Bank.find()
-            res.render('admin/voucher/create',{category,nominal,bank,name:req.session.user.name,
+            const payment = await Payment.find()
+            res.render('admin/voucher/create',{category,nominal,payment,name:req.session.user.name,
                 title: 'Halaman Tambah Voucher'})
         } catch (err) {
             req.flash('alertMessage',`${err.message}`)
@@ -42,7 +42,7 @@ module.exports={
 
     actionCreate:async(req,res)=>{
         try {
-            const {name,category,nominals,bank} = req.body;
+            const {name,category,nominals,payment} = req.body;
             if(req.file){
                 let tmp_path = req.file.path;
                 let originalExt = req.file.originalname.split('.')[req.file.originalname.split('.').length-1]
@@ -56,7 +56,7 @@ module.exports={
                 src.on('end',async()=>{
                     try {
                         const voucher = new Voucher({
-                            name,category,nominals,bank,thumbnail:filename
+                            name,category,nominals,payment,thumbnail:filename
                         })
                         await voucher.save()
                         req.flash('alertMessage', "Berhasil tambah voucher")
@@ -71,7 +71,7 @@ module.exports={
                 })
             }else{
                 const voucher = new Voucher({
-                    name,category,nominals,bank
+                    name,category,nominals,payment
                 })
                 await voucher.save()
                 req.flash('alertMessage', "Berhasil tambah voucher")
@@ -92,9 +92,9 @@ module.exports={
             const{id} = req.params
             const nominal = await Nominal.find()
             const category = await Category.find()
-            const bank = await Bank.find()
-            const voucher = await Voucher.findOne({_id:id}).populate('category').populate('nominals').populate('bank')
-            res.render('admin/voucher/edit',{voucher,nominal,bank,category,name:req.session.user.name,
+            const payment = await Payment.find()
+            const voucher = await Voucher.findOne({_id:id}).populate('category').populate('nominals').populate('payment')
+            res.render('admin/voucher/edit',{voucher,nominal,payment,category,name:req.session.user.name,
                 title: 'Halaman Edit Voucher'})
         } catch (err) {
             req.flash('alertMessage',`${err.message}`)
@@ -106,7 +106,7 @@ module.exports={
     ActionEdit: async(req,res)=>{
         try {
             const{id} = req.params
-            const {name,category,nominals,bank} = req.body;
+            const {name,category,nominals,payment} = req.body;
             if(req.file){
                 let tmp_path = req.file.path;
                 let originalExt = req.file.originalname.split('.')[req.file.originalname.split('.').length-1]
@@ -127,7 +127,7 @@ module.exports={
                         await Voucher.findOneAndUpdate({
                             _id:id
                         },{
-                            name,category,bank,nominals,thumbnail:filename
+                            name,category,payment,nominals,thumbnail:filename
                         })
                         await voucher.save()
                         req.flash('alertMessage', "Berhasil edit voucher")
@@ -144,7 +144,7 @@ module.exports={
                 await Voucher.findOneAndUpdate({
                     _id:id
                 },{
-                    name,category,nominals,bank
+                    name,category,nominals,payment
                 })
 
                 req.flash('alertMessage', "Berhasil edit voucher")

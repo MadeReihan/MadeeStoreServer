@@ -26,9 +26,9 @@ let voucherSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
-    bank:[{
+    payment:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Bank'
+        ref:'Payment'
     }]
 
 })

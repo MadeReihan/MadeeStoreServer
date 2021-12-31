@@ -69,17 +69,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Bank</label>
+                        <label>Payment</label>
                         <div class="select2-purple">
-                            <select class="form-control select2" multiple="multiple" style="width: 100%;" name="bank" required data-placeholder="Pilih Bank">
-                              <% bank.forEach(bank=>{%>
-                                <option value="<%= bank._id%>"
-                                    <%voucher.bank.forEach(voucherBank => { %>
-                                        <%if(bank._id.toString() === voucherBank._id.toString()){ %>
+                            <select class="form-control select2" multiple="multiple" style="width: 100%;" name="payment" required data-placeholder="Pilih payment">
+                              <% payment.forEach(payment=>{%>
+                                <option value="<%= payment._id%>"
+                                    <%voucher.payment.forEach(voucherPayment => { %>
+                                        <%if(payment._id.toString() === voucherPayment._id.toString()){ %>
                                             selected
                                         <%}%>
                                     <%})%>    
-                                ><%= bank.bankName%> - <%= bank.noRekening%> </option>
+                                ><%= payment.type%> - <%= payment.banks.bankName%> (<%= payment.banks.noRekening%>) </option>
                               <%})%>
                             </select>
                         </div>
