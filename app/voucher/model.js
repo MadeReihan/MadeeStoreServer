@@ -26,6 +26,10 @@ let voucherSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
+    bank:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Bank'
+    }]
 
 })
 

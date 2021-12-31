@@ -5,6 +5,7 @@
       <th>Nama Game</th>
       <th>Category</th>
       <th>Nominal</th>
+      <th>Bank</th>
       <th>Gambar</th>
       <th>Status</th>
       <th>Action</th>
@@ -19,6 +20,11 @@
           <td>
               <% voucher[i].nominals.forEach(nominals =>{ %>
                 <span class="badge badge-warning"><%= nominals.coinName%> - <%=nominals.coinQuantity%></span>
+              <%})%>
+          </td>
+          <td>
+              <% voucher[i].bank.forEach(bank =>{ %>
+                <span class="badge badge-warning"><%= bank.bankName%> - <%=bank.noRekening%></span>
               <%})%>
           </td>
           
@@ -59,6 +65,7 @@
       <th>Nama Game</th>
       <th>Category</th>
       <th>Nominal</th>
+      <th>Bank</th>
       <th>Gambar</th>
       <th>Status</th>
       <th>Action</th>
