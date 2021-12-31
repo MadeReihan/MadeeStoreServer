@@ -44,7 +44,11 @@ let playerSchema = mongoose.Schema({
     favorite:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Category'
-    }
+    },
+    payment:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'payment'
+    }],
     
 
 

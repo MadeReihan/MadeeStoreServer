@@ -5,7 +5,6 @@
       <th>Nama Game</th>
       <th>Category</th>
       <th>Nominal</th>
-      <th>Payment</th>
       <th>Gambar</th>
       <th>Status</th>
       <th>Action</th>
@@ -22,14 +21,9 @@
                 <span class="badge badge-warning"><%= nominals.coinName%> - <%=nominals.coinQuantity%></span>
               <%})%>
           </td>
-          <td>
-              <% voucher[i].payment.forEach(payment =>{ %>
-                <span class="badge badge-warning"><%= payment.type%> - <%= payment.banks.bankName%> (<%= payment.banks.noRekening%>)</span>
-              <%})%>
-          </td>
           
           <td>
-              <img src="/uploads/<%=voucher[i].thumbnail%>" width="50px" height="50px">
+            <img src="/uploads/<%=voucher[i].thumbnail%>" width="50px" height="50px">
           </td>
 
           <td>
@@ -65,7 +59,6 @@
       <th>Nama Game</th>
       <th>Category</th>
       <th>Nominal</th>
-      <th>Payment</th>
       <th>Gambar</th>
       <th>Status</th>
       <th>Action</th>
