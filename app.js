@@ -21,6 +21,7 @@ var UsersRouter = require('./app/users/router');
 var TransactionRouter = require('./app/transaction/router');
 var PlayerRouter = require('./app/player/router');
 var authRouter = require('./app/auth/router');
+var CustomerRouter = require('./app/customer/router');
 
 
 var app = express();
@@ -60,6 +61,7 @@ app.use('/bank', BankRouter);
 app.use('/payment', PaymentRouter);
 app.use('/transaction', TransactionRouter);
 app.use('/user', UsersRouter);
+app.use('/customer', CustomerRouter);
 
 
 

@@ -22,9 +22,9 @@
                 </ul>
               <%= transaction[i]?.historyVoucherTopup?.gameName %>
               <br>
-              <%= transaction[i]?.historyVoucherTopup?.category %>
+              <%= transaction[i]?.category[0].name ?? '-' %>
             </td>
-          <td><%= transaction[i]?.historyVoucherTopup?.quantity %> - <%= transaction[i]?.historyVoucherTopup?.coinName %></td>
+          <td><%= transaction[i]?.historyVoucherTopup?.coinQuantity %> - <%= transaction[i]?.historyVoucherTopup?.coinName %></td>
           
           <td><%= transaction[i]?.value %></td>
             
@@ -39,7 +39,7 @@
           </td>
 
           <td>
-              <%= transaction[i]?.player?.name ?? '-'%>
+              <%= transaction[i].player.username ?? '-'%>
           </td>
           
           <% if(transaction[i].status === 'pending' || transaction[i].status === 'Pending'){ %>
