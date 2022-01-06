@@ -89,7 +89,7 @@ detailPage: async (req, res) => {
             const payload = {
                 historyVoucherTopup:{
                     gameName:res_voucher._doc.name,
-                    category:res_voucher._doc.category.name ? res_voucher._doc.name : '' ,
+                    category:res_voucher._doc.category.name ,
                     thumbnail:res_voucher._doc.thumbnail,
                     coinName:res_nominal._doc.coinName,
                     coinQuantity:res_nominal._doc.coinQuantity,
