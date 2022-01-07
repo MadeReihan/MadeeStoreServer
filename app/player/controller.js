@@ -271,6 +271,7 @@ detailPage: async (req, res) => {
                             data:{
                                 id:player._id,
                                 name:player.name,
+                                username:player.name,
                                 phoneNumber:player.phoneNumber,
                                 avatar:player.avatar,
                             }
@@ -290,6 +291,7 @@ detailPage: async (req, res) => {
                     data:{
                         id:player._id,
                         name:player.name,
+                        username:player.name,
                         phoneNumber:player.phoneNumber,
                         avatar:player.avatar,
                     }
