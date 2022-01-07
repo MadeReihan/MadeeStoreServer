@@ -296,9 +296,7 @@ detailPage: async (req, res) => {
                 })
             }
         } catch (err) {
-            if(err && err.name === "ValidationError"){
-                res.status(422).json({error:1,message:err.message,fields:err.errors})
-            }
+            res.status(500).json({message:err.message || `terjadi eksalaahn pada serve`})
         }
     }
 
