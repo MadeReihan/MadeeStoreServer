@@ -9,6 +9,7 @@ const path = require('path')
 const fs = require('fs')
 const config = require('../../config')
 const { resourceUsage } = require('process')
+
 module.exports={
     landingPage:async(req,res)=>{
         try {
@@ -101,7 +102,7 @@ detailPage: async (req, res) => {
                     bankName:res_bank._doc.bankName,
                     noRekening:res_bank._doc.noRekening,
                 },
-                name:name,
+                name:req.player.name,
                 accountUser:accountUser,
                 tax:tax,
                 value:value,
@@ -237,11 +238,10 @@ detailPage: async (req, res) => {
     },
     editProfile:async(req,res,next)=>{
         try {
-            const {name ="",username="", phoneNumber = ""} = req.body
+            const {name ="", phoneNumber = ""} = req.body
 
             const payload = {}
             if(name.length) payload.name = name
-            if(username.length) payload.name = username
 
             if(phoneNumber.length) payload.phoneNumber = phoneNumber
 
@@ -273,7 +273,6 @@ detailPage: async (req, res) => {
                             data:{
                                 id:player._id,
                                 name:player.name,
-                                username:player.name,
                                 phoneNumber:player.phoneNumber,
                                 avatar:player.avatar,
                             }
@@ -293,7 +292,6 @@ detailPage: async (req, res) => {
                     data:{
                         id:player._id,
                         name:player.name,
-                        username:player.name,
                         phoneNumber:player.phoneNumber,
                         avatar:player.avatar,
                     }
