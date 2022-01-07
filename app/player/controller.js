@@ -237,10 +237,12 @@ detailPage: async (req, res) => {
     },
     editProfile:async(req,res,next)=>{
         try {
-            const {name ="", phoneNumber = ""} = req.body
+            const {name ="",username="", phoneNumber = ""} = req.body
 
             const payload = {}
             if(name.length) payload.name = name
+            if(username.length) payload.name = username
+
             if(phoneNumber.length) payload.phoneNumber = phoneNumber
 
             if(req.file){
