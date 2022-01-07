@@ -102,7 +102,7 @@ detailPage: async (req, res) => {
                     bankName:res_bank._doc.bankName,
                     noRekening:res_bank._doc.noRekening,
                 },
-                name:req.player.name,
+                name:name,
                 accountUser:accountUser,
                 tax:tax,
                 value:value,
@@ -273,6 +273,7 @@ detailPage: async (req, res) => {
                             data:{
                                 id:player._id,
                                 name:player.name,
+                                username:player.username,
                                 phoneNumber:player.phoneNumber,
                                 avatar:player.avatar,
                             }
@@ -292,6 +293,7 @@ detailPage: async (req, res) => {
                     data:{
                         id:player._id,
                         name:player.name,
+                        username:player.username,
                         phoneNumber:player.phoneNumber,
                         avatar:player.avatar,
                     }
